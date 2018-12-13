@@ -16,7 +16,8 @@ export interface Feed {
 export interface FeedItems {
     title: string;
     author: string;
+    categories: string[];
+    thumbnail: string;
     description: string;
     pubDate: string;
-    items: [];
 }

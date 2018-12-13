@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Feed } from 'src/app/model/feed';
+import { Feed, FeedItems } from 'src/app/model/feed';
 
 @Component({
   selector: 'app-feed-card',
@@ -8,7 +8,9 @@ import { Feed } from 'src/app/model/feed';
 })
 export class FeedCardComponent implements OnInit {
 
+  @Input() feedUrl: string;
   @Input() feed: Feed;
+  @Input() feedItems: FeedItems[];
 
   constructor() { }
 

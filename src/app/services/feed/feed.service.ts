@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Feed, FeedPayload } from '../../model/feed';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +13,7 @@ export class FeedService {
   constructor(private http: HttpClient) { }
 
   getFeedPayload(url: string): Observable<FeedPayload> {
-    return this.http.get(this.rssToJsonServiceBaseUrl + url)
-      .pipe(map(this.extractFeed));
-  }
-  extractFeed(response: Response):  {
-    let feed = response.json();
-    return feed;
+    return this.http.get<FeedPayload>(this.rssToJsonServiceBaseUrl + url);
   }
 
   private handleError(error: any) {

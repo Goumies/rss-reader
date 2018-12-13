@@ -1,8 +1,11 @@
+<input type="text" [(ngModel)]="feedUrl">
+<div>{{ feedUrl }}</div>
+
 <div>
-  <span class="right"><button md-button (click)="refreshFeed()">refresh</button></span>
+  <span class="right"><button md-button (click)="refreshFeed()">Refresh feed</button></span>
   <span class="center"> Medium news</span>
 </div>
 
-<app-feed-card></app-feed-card>
+<app-feed-card *ngIf="feed" [feedUrl]="feedUrl" [feed]="feed" [feedItems]="feedItems"></app-feed-card>
 
 <router-outlet></router-outlet>
