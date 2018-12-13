@@ -13,19 +13,13 @@ export class FeedService {
 
   constructor(private http: HttpClient) { }
 
-  getFeedContent(url: string): FeedPayload {
-    let feedContent;
-    this.http.get(this.rssToJsonServiceBaseUrl + url)
-      .subscribe(
-        feed => {
-          feedContent = feed;
-        }
-      );
-    return feedContent;
+  getFeedPayload(url: string): Observable<FeedPayload> {
+    return this.http.get(this.rssToJsonServiceBaseUrl + url)
+      .pipe(map(this.extractFeed));
   }
-
-  private extractFeeds(feedContent: FeedPayload): Feed {
-    return feedContent.feed;
+  extractFeed(response: Response):  {
+    let feed = response.json();
+    return feed;
   }
 
   private handleError(error: any) {

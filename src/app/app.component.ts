@@ -22,7 +22,10 @@ export class AppComponent implements OnInit {
   }
 
   private refreshFeed() {
-    this.feed = this.feedService.getFeedContent(this.feedUrl);
-    console.log(this.feed);
+    this.feedService.getFeedPayload(this.feedUrl)
+      .subscribe(
+        feedPayload => this.feed = feedPayload
+      );
+      console.log(this.feed);
   }
 }
