@@ -35,10 +35,5 @@ export class AppComponent implements OnInit {
           console.log('>>> Done', this.feed);
         }
       );
-      
-  }
-
-  private refreshFeedUrl() {
-    return this.feedUrl;
   }
 }
